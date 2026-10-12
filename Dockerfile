@@ -25,7 +25,7 @@ COPY . .
 
 # Installation de Composer et des dépendances PHP
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-pdo_pgsql
 
 # Configuration des permissions pour Laravel
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
